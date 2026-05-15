@@ -1,0 +1,20 @@
+name: "gcp_media_pipeline"
+version: "1.0.0"
+config-version: 2
+
+# THE FIX: Tell dbt to use the connection we defined in profiles.yml!
+profile: "gcp_media_pipeline"
+
+# This tells dbt where to look for your SQL files
+model-paths: ["models"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+
+models:
+  gcp_media_pipeline:
+    # Everything in the "staging" folder will be built as temporary views
+    staging:
+      +materialized: view
+    # Everything in the "marts" folder will be built as physical tables
+    marts:
+      +materialized: table

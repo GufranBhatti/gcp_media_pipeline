@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: fct_user_engagement
+    description: "The final Star Schema table for user watch analytics."
+    columns:
+      - name: user_id
+        description: "The unique ID of the user."
+        tests:
+          - not_null
+      - name: movie_id
+        description: "The ID of the movie."
+        tests:
+          - not_null
+      - name: watch_duration_mins
+        description: "How long the user watched."
+        tests:
+          - not_null

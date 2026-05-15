@@ -1,0 +1,33 @@
+name: Data Pipeline CI/CD
+
+# Trigger the pipeline on every push to the main branch
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  code-and-data-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+
+      - name: Install Dependencies
+        run: |
+          pip install pytest apache-airflow dbt-bigquery
+
+      - name: Run Pytest (DAG Integrity)
+        run: |
+          # This runs the test_dag_integrity.py file we just created!
+          pytest tests/
+
+      # In a real environment, you would inject your GCP JSON key as a GitHub Secret here
+      # so GitHub Actions could run `dbt test` against a staging BigQuery environment.
+      - name: CI/CD Pipeline Passed
+        run: echo "All syntax and DAG integrity tests passed successfully!"

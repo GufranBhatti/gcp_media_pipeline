@@ -1,0 +1,11 @@
+gcp_media_pipeline:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      project: streaming-media-platform
+      dataset: streaming_mart
+      threads: 4
+      keyfile: /opt/airflow/secrets/streaming-media-platform-27b4c3512ef9.json
+      location: US

@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: streaming_raw
+    database: streaming-media-platform
+    schema: streaming_raw
+    tables:
+      - name: watch_events
+      - name: movies
+      - name: users

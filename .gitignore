@@ -1,0 +1,21 @@
+# Secrets & Local Configurations (CRITICAL)
+.env
+secrets/
+*service-account*.json
+*.json
+
+# Airflow Artifacts
+logs/
+airflow.db
+airflow-webserver.pid
+webserver_config.py
+
+# dbt Artifacts
+dbt_project/target/
+dbt_project/dbt_packages/
+dbt_project/logs/
+
+# Python Caches & Testing
+__pycache__/
+*.pyc
+.pytest_cache/
